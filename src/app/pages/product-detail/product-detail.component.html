@@ -1,0 +1,51 @@
+<!-- @if(product){
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <img [src]="product.image" alt="" class="card-img-top">
+            </div>
+            <div>
+                <h5 class="crad-title">{{product.title}}</h5>
+                <p class="crad-text">
+                    {{ product.description }}
+                </p>
+              
+            </div>
+        </div>
+        
+    </div>
+}@else{
+    <h3>Product Not Found</h3>
+} -->
+
+@if(product){
+<div class="bg-gray-100 mt-5">
+    <div class="container mx-auto px-4 py-8">
+        <div class="flex flex-wrap -mx-4">
+            <div class="w-full md:w-1/2 px-4 mb-8">
+                <img [src]="product.image" 
+                    alt="Product" class="w-[400px] rounded-lg shadow-md mb-4" id="mainImage">
+            </div>
+            <div class="w-full md:w-1/2 px-4">
+                <h2 class="text-3xl font-bold mb-2">{{product.title}}</h2>
+                <p class="text-gray-600 mb-4">{{ product.category}}</p>
+                <div class="mb-4">
+                    <span class="text-2xl font-bold mr-2">{{product.price}}</span>
+                </div>
+                <p class="text-gray-700 mb-6">{{product.description}}</p>
+             
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Rating</h3>
+                    <ul class="list-disc list-inside text-gray-700">
+                        <li>{{ product.rating.rate }} of 5</li>
+                        <li>{{ product.rating.count }} reviews</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}@else{
+<h3>Product Not Found</h3>
+}
