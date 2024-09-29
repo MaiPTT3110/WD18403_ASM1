@@ -13,9 +13,11 @@ import { AuthService } from '../../services/auth.service';
 export class HeaderComponent {
 
   isShow: boolean = false;
+  isAdmin: boolean = false;
   userEmail: string | null = null;
   isLoggedIn: boolean = false;
   router = inject(Router);
+
 
   constructor(private authService: AuthService) {
     this.checkLoginStatus();
@@ -30,7 +32,6 @@ export class HeaderComponent {
       this.userEmail = this.authService.getUserEmail();
     }
   }
-
   logout(): void {
     this.authService.logout();
     this.isLoggedIn = false; 
@@ -39,6 +40,7 @@ export class HeaderComponent {
   }
   ngOnInit(): void {
     this.checkLoginStatus();
+    this.isAdmin = this.authService.isAdmin(); 
     console.log(this.isLoggedIn);
     
   }
